@@ -364,6 +364,53 @@ flowchart LR
   R -->|git pull| L
 ```
 
+## 11.4 Git Credentials dan Autentikasi GitHub
+Saat Git berbicara dengan GitHub (push/pull), Git perlu **autentikasi**. Autentikasi ini tidak “tersimpan di Git”, melainkan dikelola oleh sistem kredensial di komputer Anda.
+
+### Opsi Autentikasi Utama
+- **HTTPS + Personal Access Token (PAT)**: lebih mudah untuk pemula.
+- **SSH Key**: lebih praktis untuk penggunaan jangka panjang.
+
+### A. HTTPS + PAT (Pemula)
+Konsep:
+- GitHub **tidak menerima password akun** untuk operasi Git via HTTPS.
+- Anda harus memakai **PAT** sebagai pengganti password.
+
+Langkah ringkas:
+1. Buat PAT di GitHub (Settings → Developer settings → Personal access tokens).
+2. Saat Git meminta username dan password:
+   - Username: username GitHub Anda.
+   - Password: PAT yang baru dibuat.
+3. Credential manager akan menyimpan token agar tidak perlu input ulang.
+
+Catatan:
+- Di Windows, Git biasanya memakai **Git Credential Manager** untuk menyimpan token.
+
+### B. SSH Key (Lebih Praktis)
+Konsep:
+- Anda membuat kunci SSH di komputer, lalu mendaftarkan **public key** ke GitHub.
+- Setelah itu push/pull bisa dilakukan tanpa memasukkan token.
+
+Langkah ringkas:
+1. Buat key: `ssh-keygen -t ed25519 -C "email@anda.com"`.
+2. Tambahkan **public key** ke GitHub (Settings → SSH and GPG keys).
+3. Uji koneksi: `ssh -T git@github.com`.
+4. Pastikan remote memakai SSH:
+   - Contoh format: `git@github.com:username/nama-repo.git`
+   - Ganti remote: `git remote set-url origin git@github.com:username/nama-repo.git`
+
+### Bagaimana Git Menghubungkan Kredensial ke Akun GitHub
+- Git melihat URL remote repo.
+- Jika URL HTTPS, Git meminta kredensial (username + PAT).
+- Jika URL SSH, Git memakai private key di komputer.
+- GitHub memverifikasi dan menghubungkan ke akun berdasarkan token atau public key.
+
+## Latihan Bab 11 (Opsional)
+1. Cek remote Anda: `git remote -v`.
+2. Tentukan apakah Anda memakai HTTPS atau SSH.
+3. Jika HTTPS, pastikan token tersimpan dengan benar.
+4. Jika SSH, jalankan `ssh -T git@github.com` untuk memastikan koneksi.
+
 ## Studi Kasus Mini
 Kasus: Anda bekerja di dua laptop.
 - Push dari laptop 1.
