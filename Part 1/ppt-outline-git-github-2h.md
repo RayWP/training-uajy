@@ -72,7 +72,7 @@ Konten: Init repo, buat file, commit, lihat log.
 13. Perintah Inti Git (Bagian 2)
 Durasi: 4 menit
 Tujuan: Melengkapi kebutuhan harian.
-Konten: `git log`, `git diff`, `git branch`, `git switch`.
+Konten: `git log`, `git diff`, `git branch`, `git switch`, `git checkout`.
 
 14. Konvensi Commit
 Durasi: 3 menit

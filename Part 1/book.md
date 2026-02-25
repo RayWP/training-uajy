@@ -103,6 +103,190 @@ Kasus: Anda menambahkan fitur login.
 
 Dengan histori ini, orang lain dapat membaca perkembangan fitur secara jelas.
 
+## 2.4 Konsep Dasar Git dan Terminologi Penting
+Bagian ini merangkum istilah paling umum di Git. Pahami dulu konsepnya, baru lanjut ke praktik.
+
+### Repository (Repo)
+Tempat Git menyimpan seluruh histori perubahan dan konfigurasi proyek. Saat Anda menjalankan `git init`, Git membuat folder tersembunyi `.git` di dalam folder proyek. Folder `.git` adalah “otak” dari repo.
+
+Contoh cerita: Rina membuat folder `belajar-git` lalu menjalankan `git init`. Sejak saat itu folder tersebut menjadi sebuah repo karena Git menambahkan `.git`.
+
+### Working Directory
+Folder kerja tempat Anda membuat dan mengedit file. Ini adalah keadaan file terbaru yang Anda lihat di editor.
+
+Contoh cerita: Dito membuka `README.md` di VS Code dan mengetik kalimat baru. Perubahan itu ada di working directory sampai dia memilih untuk menyimpannya ke staging.
+
+### Staging Area (Index)
+Tempat “penampungan sementara” sebelum commit. Anda memilih perubahan apa yang akan disimpan dengan `git add`. Ini memungkinkan Anda memilih file tertentu saja yang masuk ke commit.
+
+Contoh cerita: Sinta mengubah `README.md` dan `notes.txt`. Ia hanya ingin menyimpan `README.md`, jadi ia menjalankan `git add README.md` dan hanya file itu yang masuk staging.
+
+### Commit
+Snapshot perubahan yang disimpan ke repo. Setiap commit punya:
+- ID unik (hash).
+- Nama penulis.
+- Waktu commit.
+- Pesan commit yang menjelaskan tujuan perubahan.
+
+**Contoh keluaran `git log` sederhana:**
+```
+commit 7c9a2f1e6b1c1d8a6a0d6c1b4f5a7b9c1a2b3c4d
+Author: Budi <budi@email.com>
+Date:   Wed Feb 25 10:30:12 2026 +0700
+
+    add login page layout
+```
+
+**Contoh pesan commit yang baik:**
+- `add login page layout`
+- `fix null check on user profile`
+- `update README with setup steps`
+
+Contoh cerita: Setelah halaman login selesai, Budi membuat commit dengan pesan `add login page layout` agar tim mudah memahami perubahan yang dilakukan.
+
+### Branch
+Jalur pengembangan terpisah. Branch memudahkan Anda mengerjakan fitur tanpa mengganggu `main`.
+Contoh: `feature-login`, `fix-bug-123`.
+
+Contoh cerita: Tim membuat branch `feature-login` untuk menambahkan halaman login tanpa mengubah versi stabil di `main`.
+
+### Merge
+Proses menggabungkan perubahan dari branch lain ke branch aktif. Biasanya setelah fitur selesai, branch digabung ke `main`.
+
+Contoh cerita: Setelah `feature-login` selesai dan diuji, tim melakukan merge agar fitur login resmi masuk ke `main`.
+
+### Remote
+Repo jarak jauh (misalnya di GitHub) yang menjadi sumber kolaborasi. Anda bisa punya lebih dari satu remote, tapi umumnya memakai `origin`.
+
+Contoh cerita: Repo lokal Sari terhubung ke GitHub. GitHub itu adalah remote tempat timnya berbagi perubahan.
+
+### Origin
+Nama default untuk remote utama. Saat Anda clone repo, Git otomatis membuat remote bernama `origin`.
+
+Contoh cerita: Setelah clone repo tim, Tono menjalankan `git remote -v` dan melihat nama `origin` yang menunjuk ke GitHub perusahaan.
+
+### HEAD
+Penanda commit/branch yang sedang aktif. Saat Anda berpindah branch, `HEAD` ikut berpindah.
+
+Contoh cerita: Ketika Nia pindah dari `main` ke `feature-login`, `HEAD` ikut berpindah dan menunjuk ke branch `feature-login`.
+
+### Main (atau Master)
+Branch utama proyek. Banyak proyek modern memakai nama `main`.
+
+Contoh cerita: Versi yang selalu stabil berada di branch `main`, dan tim hanya merge fitur yang sudah lolos review.
+
+### Clone
+Menduplikasi repo dari remote ke lokal, termasuk histori commit.
+Perintah: `git clone <URL>`.
+
+Contoh cerita: Andi baru bergabung ke tim, ia menjalankan `git clone` agar mendapatkan seluruh histori proyek di laptopnya.
+
+### Pull dan Push
+- `git pull`: mengambil perubahan dari remote dan menggabungkannya ke lokal.
+- `git push`: mengirim commit lokal ke remote.
+
+Contoh cerita: Pagi hari, Rudi menjalankan `git pull` untuk mengambil update tim. Setelah selesai bekerja, ia `git push` agar orang lain bisa melihat hasilnya.
+
+### Fetch
+Mengambil perubahan dari remote tanpa menggabungkan ke branch lokal. Berguna jika Anda ingin melihat perubahan dulu.
+
+Contoh cerita: Lala ingin mengecek perubahan terbaru tanpa mengganggu pekerjaannya, jadi ia memakai `git fetch` lalu meninjau perbedaannya.
+
+### Switch/Checkout
+Berpindah branch.
+- `git switch nama-branch` (disarankan).
+- `git checkout nama-branch` (lebih lama, tetapi masih umum).
+
+Contoh cerita: Damar sedang memperbaiki bug, lalu ia menjalankan `git switch fix-bug-123` untuk fokus di branch tersebut.
+
+### Diff
+Melihat perbedaan antara dua versi file atau antara working directory dan commit terakhir.
+Perintah: `git diff`.
+
+Contoh cerita: Sebelum commit, Eka menjalankan `git diff` untuk memastikan hanya baris yang ia maksud yang berubah.
+
+### Tag
+Penanda pada commit tertentu, biasanya untuk rilis versi.
+Contoh: `v1.0.0`.
+
+Contoh cerita: Setelah rilis pertama selesai, tim menambahkan tag `v1.0.0` pada commit rilis agar mudah ditemukan di masa depan.
+
+### .gitignore
+File konfigurasi untuk memberitahu Git agar mengabaikan file tertentu (misal: file build, cache, atau kredensial lokal).
+
+Contoh cerita: Folder `node_modules` terlalu besar dan tidak perlu di-commit, jadi tim menuliskannya di `.gitignore`.
+
+### Conflict
+Terjadi saat dua perubahan menyentuh baris yang sama dan Git tidak bisa memutuskan mana yang benar. Konflik harus diselesaikan manual.
+
+Contoh cerita: A mengedit `laporan.md` pada baris 10-16 untuk menambah paragraf. Pada waktu yang hampir sama, C mengedit `laporan.md` pada baris 12-14 untuk memperbaiki kalimat. Saat merge, Git mendeteksi konflik karena perubahan terjadi di rentang baris yang saling tumpang tindih.
+
+## 2.5 Git Workflow Dasar dan Contoh
+Workflow adalah urutan kerja yang konsisten agar perubahan teratur, mudah direview, dan aman untuk kolaborasi.
+
+### Alur Umum (Versi Sederhana)
+1. Buat atau pilih issue (tugas/bug).
+2. Buat branch untuk tugas tersebut.
+3. Kerjakan perubahan di working directory.
+4. `git add` untuk memilih perubahan yang akan disimpan.
+5. `git commit` dengan pesan yang jelas.
+6. `git push` ke remote.
+7. (Jika memakai GitHub) buka pull request.
+8. Review, perbaiki jika perlu, lalu merge ke `main`.
+
+### Ilustrasi Workflow
+```mermaid
+flowchart LR
+  I[Issue/Tugas] --> B[Branch]
+  B --> W[Ubah File]
+  W --> A[git add]
+  A --> C[git commit]
+  C --> P[git push]
+  P --> PR[Pull Request]
+  PR --> R[Review]
+  R --> M[Merge ke main]
+```
+
+### Contoh Cerita Workflow
+Kasus: Tim ingin menambahkan fitur “Profil Pengguna”.
+1. Tim membuat issue: “Tambah halaman profil pengguna”.
+2. Rina membuat branch `feature-profile`.
+3. Rina menambah file `profile.html` dan mengedit `style.css`.
+4. Rina memilih perubahan yang benar dengan `git add profile.html style.css`.
+5. Rina commit dengan pesan `add user profile page`.
+6. Rina push ke GitHub: `git push -u origin feature-profile`.
+7. Rina membuka pull request dan meminta review.
+8. Setelah disetujui, branch di-merge ke `main`.
+
+### Kenapa Workflow Penting
+- Mencegah perubahan besar yang sulit dilacak.
+- Memudahkan review karena perubahan fokus per fitur.
+- Mengurangi konflik di branch utama.
+
+## 2.6 Top 10 Perintah Git yang Paling Sering Dipakai
+Bagian ini merangkum perintah inti untuk pemula dan tim kecil.
+
+1. `git init` membuat repo baru di folder saat ini.
+2. `git clone <URL>` menyalin repo dari remote ke lokal.
+3. `git status` melihat status perubahan file.
+4. `git add <file>` memasukkan perubahan ke staging.
+5. `git commit -m "pesan"` menyimpan snapshot perubahan.
+6. `git log` menampilkan histori commit.
+7. `git branch` membuat atau melihat daftar branch.
+8. `git switch <branch>` berpindah ke branch tertentu.
+9. `git checkout <branch>` cara lama yang masih sering ditemui untuk berpindah branch.
+10. `git merge <branch>` menggabungkan branch ke branch aktif.
+11. `git pull` mengambil perubahan dari remote.
+12. `git push` mengirim commit lokal ke remote.
+
+Contoh alur singkat:
+```
+git status
+git add README.md
+git commit -m "update README"
+git push
+```
+
 ## Ringkasan Bab 2
 - Git adalah DVCS yang paling banyak digunakan.
 - Commit adalah unit dokumentasi perubahan.
@@ -137,45 +321,174 @@ Gunakan VS Code atau editor lain yang Anda nyaman.
 
 ---
 
-# Bab 4. Repository Lokal Pertama
+# Bab 4. Repository Lokal Pertama (Contoh Aplikasi Mini Berkelanjutan)
+
+Di bab ini Anda membuat mini website sederhana: `index.html` dan `style.css`. Contoh ini akan berlanjut sampai tahap konflik agar alurnya terasa nyata dari awal sampai akhir.
 
 ## 4.1 Membuat Repository
-Langkah-langkah:
-1. Buat folder baru, misal `belajar-git`.
+1. Buat folder baru, misal `mini-web`.
 2. Masuk ke folder tersebut.
 3. Jalankan `git init`.
 
-## 4.2 Membuat File dan Commit Pertama
-1. Buat file `README.md`.
-2. Isi dengan teks sederhana, misal: `# Belajar Git`.
-3. Jalankan `git status` untuk melihat perubahan.
-4. Jalankan `git add README.md`.
-5. Jalankan `git commit -m "add initial README"`.
+## 4.2 Membuat File Awal (HTML + CSS) dan Commit Pertama
+1. Buat file `index.html` dengan isi berikut:
+```html
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini Web</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Halo Git</h1>
+    <p>Ini proyek web pertamaku.</p>
+  </body>
+</html>
+```
+2. Buat file `style.css` dengan isi awal berikut:
+```css
+body {
+  font-family: Arial, sans-serif;
+  padding: 24px;
+}
+```
+3. Jalankan `git status`.
+4. Tambahkan kedua file ke staging:
+```
+git add index.html style.css
+```
+5. Commit perubahan:
+```
+git commit -m "add initial html and css"
+```
 
-## 4.3 Memahami `git status`
-- Menunjukkan file yang belum disimpan ke commit.
-- Memberi petunjuk langkah berikutnya.
+## 4.3 Edit CSS dan Commit Kedua
+1. Ubah `style.css` menjadi:
+```css
+body {
+  font-family: Arial, sans-serif;
+  padding: 24px;
+  background: #f4f6f8;
+}
 
-## 4.4 Ilustrasi: Alur File di Git
+h1 {
+  color: #1e3a8a;
+}
+```
+2. Cek status:
+```
+git status
+```
+3. Tambahkan perubahan dan commit:
+```
+git add style.css
+git commit -m "improve page styling"
+```
+
+## 4.4 Membuat Branch Fitur (Menu Header)
+1. Buat branch:
+```
+git branch feature-header
+git switch feature-header
+```
+2. Ubah `index.html`:
+```html
+<body>
+  <header>Mini Web</header>
+  <h1>Halo Git</h1>
+  <p>Ini proyek web pertamaku.</p>
+</body>
+```
+3. Commit perubahan:
+```
+git add index.html
+git commit -m "add simple header"
+```
+
+## 4.5 Buat Perubahan Berbeda di `main`
+1. Pindah ke `main`:
+```
+git switch main
+```
+2. Ubah baris yang sama pada `index.html`:
+```html
+<body>
+  <h1>Halo Git</h1>
+  <p>Selamat datang di mini web app.</p>
+</body>
+```
+3. Commit perubahan:
+```
+git add index.html
+git commit -m "update intro text"
+```
+
+## 4.6 Merge Tanpa Konflik
+1. Coba merge branch fitur:
+```
+git merge feature-header
+```
+2. Karena perubahan berada di bagian berbeda, merge berjalan lancar tanpa konflik.
+
+## 4.7 Melihat Riwayat dengan `git log`
+Jalankan:
+```
+git log --oneline
+```
+Anda akan melihat semua commit dari tahap awal hingga fitur header.
+
+## 4.8 Git Workspace dan Staging Stage
+Dalam Git ada dua tahap penting sebelum commit:
+
+- **Git workspace (working directory)**: tempat Anda mengedit file secara langsung. Perubahan di sini belum tersimpan ke histori Git.
+- **Git staging stage (staging area)**: tempat memilih perubahan yang akan dimasukkan ke commit. Anda mengisinya dengan `git add`.
+
+Contoh di proyek `mini-web`:
+- Anda mengubah `index.html` dan `style.css` di workspace.
+- Anda hanya ingin menyimpan perubahan `style.css` dulu, maka jalankan:
+```
+git add style.css
+```
+- Saat ini staging hanya berisi `style.css`, sementara `index.html` masih menunggu di workspace.
+
+Ilustrasi alur workspace ke staging:
+```mermaid
+flowchart LR
+  W[Workspace] -->|git add style.css| S[Staging Area]
+  W -. index.html masih berubah .-> W
+```
+
+## 4.9 Memahami `git status`
+`git status` memberi tahu:
+- File yang sudah berubah.
+- File yang sudah masuk staging.
+- Langkah yang disarankan berikutnya.
+
+## 4.10 Ilustrasi: Alur File di Git
 ```mermaid
 flowchart LR
   W[Working Directory] -->|git add| S[Staging Area]
   S -->|git commit| R[Repository]
+  R -->|git push| O[Remote (GitHub)]
 ```
 
 ## Studi Kasus Mini
-Kasus: Anda menambahkan file `notes.txt` tetapi lupa `git add`.
-- `git status` akan menunjukkan file tersebut sebagai untracked.
+Kasus: Anda mengubah `index.html` tapi lupa `git add`.
+`git status` akan menunjukkan file tersebut sebagai modified dan belum masuk staging.
 
 ## Ringkasan Bab 4
-- `git init` membuat repo.
-- `git add` menaruh perubahan ke staging.
-- `git commit` menyimpan perubahan.
+- Repo dibuat dengan `git init`.
+- Perubahan dipilih dengan `git add`.
+- Snapshot disimpan dengan `git commit`.
+- Branch membantu fitur terpisah dan merge menggabungkan perubahan.
+- `git log` menunjukkan histori perubahan.
 
 ## Latihan Bab 4
-1. Buat repo baru dengan `git init`.
-2. Buat 2 commit pada file berbeda.
-3. Jalankan `git status` setelah tiap langkah.
+1. Tambahkan satu paragraf baru di `index.html`.
+2. Commit dengan pesan yang sesuai.
+3. Jalankan `git log --oneline`.
 
 ---
 
@@ -252,17 +565,26 @@ Konflik terjadi ketika dua perubahan menyentuh baris yang sama.
 
 ## 7.2 Cara Memunculkan Konflik (Latihan)
 Langkah:
-1. Di `main`, edit baris pertama `README.md`.
-2. Commit perubahan.
-3. Pindah ke branch lain dan edit baris yang sama.
-4. Commit perubahan.
-5. Coba merge ke `main`.
+1. Gunakan repo `mini-web` dari Bab 4.
+2. Di `main`, ubah paragraf di `index.html` menjadi: `Selamat datang di mini web app.` lalu commit.
+3. Buat branch baru: `git switch -c feature-text`.
+4. Di branch ini, ubah paragraf yang sama menjadi: `Ini adalah versi terbaru mini web app.` lalu commit.
+5. Kembali ke `main` dan jalankan `git merge feature-text` untuk memunculkan konflik.
 
 ## 7.3 Menyelesaikan Konflik
 - Buka file konflik.
 - Pilih perubahan yang benar.
 - Simpan file.
 - Jalankan `git add` dan `git commit`.
+
+Contoh tampilan konflik di `index.html`:
+```
+<<<<<<< HEAD
+<p>Selamat datang di mini web app.</p>
+=======
+<p>Ini adalah versi terbaru mini web app.</p>
+>>>>>>> feature-text
+```
 
 ## 7.4 Ilustrasi: Konflik dan Resolusi
 ```mermaid
@@ -423,42 +745,112 @@ Kasus: Anda bekerja di dua laptop.
 
 ---
 
-# Bab 12. GitHub Issues
+# Bab 12. GitHub Repositories
 
-## 12.1 Apa Itu Issues
+## 12.1 Apa Itu GitHub Repository
+GitHub repository adalah **repository Git yang disimpan di GitHub**. Repo ini berisi kode, histori commit, dan fitur kolaborasi seperti Issues, Pull Request, dan Actions.
+
+## 12.2 Perbedaan Repo Lokal vs Repo GitHub
+- **Repo lokal** ada di komputer Anda dan bisa digunakan tanpa internet.
+- **Repo GitHub** ada di server GitHub dan dipakai untuk kolaborasi, backup, dan berbagi kode.
+
+## 12.3 Cara Membuat Repository di GitHub
+1. Masuk ke GitHub.
+2. Klik tombol **+** di kanan atas, pilih **New repository**.
+3. Isi nama repo, pilih Public/Private.
+4. (Opsional) Centang **Add a README file**.
+5. Klik **Create repository**.
+
+## 12.4 Cara Mengakses Fitur di Repository
+Setelah repo dibuat, Anda akan melihat beberapa tab di halaman repo:
+- **Code**: melihat file dan tombol **Code** untuk clone.
+- **Issues**: membuat dan mengelola tugas/bug.
+- **Pull requests**: mengusulkan perubahan dari branch.
+- **Projects**: papan kerja untuk merencanakan dan melacak pekerjaan.
+- **Actions**: melihat workflow otomatis.
+- **Settings**: mengatur akses dan fitur repo.
+
+Jika tab **Issues** atau **Actions** tidak muncul, cek **Settings → Features** untuk mengaktifkannya.
+
+## 12.5 GitHub Projects
+GitHub Projects adalah papan kerja (kanban/roadmap) untuk mengatur pekerjaan menggunakan issue dan pull request sebagai item.
+
+### Cara Mengakses Projects
+1. Buka halaman repository di GitHub.
+2. Klik tab **Projects**.
+3. Klik **New project**.
+4. Pilih template (misal: Kanban).
+5. Tambahkan issue atau PR ke board dengan **Add item**.
+
+Catatan:
+- Di beberapa organisasi, Projects bisa diatur dari level organisasi, bukan hanya repo.
+- Jika tab **Projects** tidak terlihat, aktifkan di **Settings → Features** atau cek izin akses.
+
+## Latihan Bab 12
+1. Buat repo baru di GitHub.
+2. Buka tab **Code** dan salin URL clone.
+3. Masuk ke tab **Issues** untuk memastikan fitur aktif.
+
+---
+
+# Bab 13. GitHub Issues
+
+## 13.1 Apa Itu Issues
 Issues adalah daftar tugas, bug, atau diskusi.
 
-## 12.2 Contoh Penggunaan
+## 13.2 Contoh Penggunaan
 - Bug: "Login gagal saat password kosong".
 - Task: "Buat halaman profil".
 
-## 12.3 Langkah Dasar
+## 13.3 Langkah Dasar
 1. Buat issue baru.
 2. Isi judul dan deskripsi.
 3. Tambahkan label dan assignee jika perlu.
 
-## Latihan Bab 12
+## 13.4 Cara Mengakses Issues di GitHub
+1. Buka halaman repository di GitHub.
+2. Klik tab **Issues**.
+3. Klik tombol **New issue**.
+4. Pilih template (jika ada), isi judul dan deskripsi.
+5. Tambahkan label, assignee, atau milestone.
+
+Jika tab **Issues** tidak terlihat, aktifkan di **Settings → Features**.
+
+## Latihan Bab 13
 1. Buat 1 issue di repo GitHub Anda.
 2. Tambahkan label sederhana.
 
 ---
 
-# Bab 13. Pull Request
+# Bab 14. Pull Request
 
-## 13.1 Apa Itu Pull Request
+## 14.1 Apa Itu Pull Request
 PR adalah proposal perubahan dari branch ke branch lain.
 
-## 13.2 Alur Dasar
+## 14.2 Alur Dasar
 1. Buat branch.
 2. Commit perubahan.
 3. Push branch.
 4. Buat PR di GitHub.
 
-## 13.3 Review dan Merge
+## 14.3 Review dan Merge
 - Reviewer memberi komentar.
 - Setelah disetujui, perubahan di-merge.
 
-## 13.4 Ilustrasi: Alur Pull Request
+## 14.4 Cara Mengakses Pull Request di GitHub
+1. Buka halaman repository di GitHub.
+2. Klik tab **Pull requests**.
+3. Klik tombol **New pull request**.
+4. Pilih branch sumber (feature) dan branch tujuan (main).
+5. Isi judul dan deskripsi PR.
+6. Klik **Create pull request**.
+7. Tambahkan reviewer jika diperlukan.
+
+Catatan:
+- Jika tab **Pull requests** tidak muncul, cek **Settings → Features**.
+- Anda juga bisa membuat PR dari notifikasi “Compare & pull request” setelah push branch.
+
+## 14.5 Ilustrasi: Alur Pull Request
 ```mermaid
 flowchart LR
   I[Issue] --> B[Branch]
@@ -468,40 +860,40 @@ flowchart LR
   R --> M[Merge]
 ```
 
-## Latihan Bab 13
+## Latihan Bab 14
 1. Buat branch baru.
 2. Lakukan perubahan kecil.
 3. Buka PR dan merge.
 
 ---
 
-# Bab 14. Forking
+# Bab 15. Forking
 
-## 14.1 Apa Itu Fork
+## 15.1 Apa Itu Fork
 Fork adalah salinan repo ke akun Anda.
 
-## 14.2 Kapan Menggunakan Fork
+## 15.2 Kapan Menggunakan Fork
 - Kontribusi ke proyek open source.
 - Anda tidak punya akses langsung ke repo utama.
 
-## Latihan Bab 14
+## Latihan Bab 15
 1. Fork repo publik.
 2. Buat perubahan kecil.
 3. Buat PR ke repo asal.
 
 ---
 
-# Bab 15. Merge, Squash, dan Rebase (Konsep)
+# Bab 16. Merge, Squash, dan Rebase (Konsep)
 
-## 15.1 Merge Commit
+## 16.1 Merge Commit
 - Menjaga histori lengkap.
 - Cocok jika ingin melihat semua commit.
 
-## 15.2 Squash Merge
+## 16.2 Squash Merge
 - Menggabungkan banyak commit menjadi satu.
 - Cocok untuk histori yang ringkas.
 
-## 15.3 Rebase
+## 16.3 Rebase
 - Menyusun ulang commit agar histori linear.
 - Sering digunakan sebelum merge.
 
@@ -510,7 +902,7 @@ Kasus: Branch Anda punya 8 commit kecil.
 - Jika ingin histori bersih, gunakan squash.
 - Jika ingin riwayat detail, gunakan merge commit.
 
-## 15.4 Ilustrasi: Merge vs Squash vs Rebase
+## 16.4 Ilustrasi: Merge vs Squash vs Rebase
 
 ### A. Merge Commit (histori bercabang tetap terlihat)
 ```mermaid
@@ -550,32 +942,32 @@ gitGraph
 
 ---
 
-# Bab 16. GitHub Actions (Intro)
+# Bab 17. GitHub Actions (Intro)
 
-## 16.1 Konsep Dasar
+## 17.1 Konsep Dasar
 GitHub Actions adalah automasi workflow seperti build dan test.
 
-## 16.2 Contoh Sederhana
+## 17.2 Contoh Sederhana
 - Saat ada push, jalankan build.
 - Workflow ditulis dalam file YAML.
 
-## Ringkasan Bab 16
+## Ringkasan Bab 17
 Actions membantu otomatisasi langkah berulang.
 
 ---
 
-# Bab 17. Markdown untuk Dokumentasi
+# Bab 18. Markdown untuk Dokumentasi
 
-## 17.1 Mengapa Markdown
+## 18.1 Mengapa Markdown
 Markdown adalah format teks sederhana yang mudah dibaca dan ditulis.
 
-## 17.2 Syntax Dasar
+## 18.2 Syntax Dasar
 - Heading dengan `#`.
 - List dengan `-`.
 - Code block dengan triple backtick.
 - Link dengan `[teks](url)`.
 
-## 17.3 Contoh README
+## 18.3 Contoh README
 ```
 # Proyek Belajar Git
 
@@ -587,18 +979,18 @@ Belajar Git dari dasar.
 - Buka file README.
 ```
 
-## Latihan Bab 17
+## Latihan Bab 18
 1. Buat README sederhana untuk repo Anda.
 2. Gunakan minimal 2 heading dan 1 code block.
 
 ---
 
-# Bab 18. Studi Kasus Lengkap: Proyek Mini
+# Bab 19. Studi Kasus Lengkap: Proyek Mini
 
-## 18.1 Deskripsi Proyek
+## 19.1 Deskripsi Proyek
 Anda membuat proyek mini: "Website Profil".
 
-## 18.2 Langkah Lengkap
+## 19.2 Langkah Lengkap
 1. Buat repo lokal.
 2. Buat file `index.html`.
 3. Commit awal.
@@ -613,15 +1005,15 @@ Anda membuat proyek mini: "Website Profil".
 12. Commit dan push.
 13. Buat PR dan merge.
 
-## 18.3 Hasil Akhir
+## 19.3 Hasil Akhir
 - Repo berisi histori commit jelas.
 - Ada issue dan PR di GitHub.
 
 ---
 
-# Bab 19. Checklist Akhir
+# Bab 20. Checklist Akhir
 
-## 19.1 Checklist Kompetensi
+## 20.1 Checklist Kompetensi
 1. Saya memahami konsep version control.
 2. Saya bisa membuat repo dan commit.
 3. Saya bisa membuat branch dan merge.
@@ -631,7 +1023,7 @@ Anda membuat proyek mini: "Website Profil".
 7. Saya memahami konsep merge, squash, dan rebase.
 8. Saya bisa menulis README dengan Markdown.
 
-## 19.2 Jika Masih Kesulitan
+## 20.2 Jika Masih Kesulitan
 - Ulangi bab yang terkait.
 - Praktikkan kembali latihan.
 

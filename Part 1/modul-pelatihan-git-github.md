@@ -81,6 +81,7 @@ Setelah pelatihan, peserta mampu:
 - `git commit`: menyimpan snapshot.
 - `git log`: melihat histori commit.
 - `git branch` / `git switch`: membuat atau berpindah branch.
+- `git checkout`: cara lama yang masih sering ditemui untuk berpindah branch.
 - `git merge`: menggabungkan branch.
 - `git pull`: mengambil perubahan dari remote.
 - `git push`: mengirim perubahan ke remote.
@@ -141,6 +142,7 @@ Setelah pelatihan, peserta mampu:
 ## 3. Fitur Dasar GitHub
 - Repository management.
 - Issues untuk pencatatan tugas/bug.
+- Projects untuk papan perencanaan kerja berbasis issue/PR.
 - Branch, commit, dan pull request.
 - Kolaborasi dan notifikasi.
 
