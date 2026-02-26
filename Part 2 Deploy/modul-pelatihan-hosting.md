@@ -61,6 +61,18 @@ Hosting adalah layanan untuk menempatkan aplikasi/website agar bisa diakses publ
 - Paling murah, cocok untuk website kecil.
 - Keterbatasan resource dan kontrol.
 
+### Cara Kerja Shared Hosting (Ringkas)
+- Resource server dibagi ke banyak akun.
+- Provider mengelola server dan keamanan dasar.
+- Pengguna fokus pada upload file dan konfigurasi aplikasi.
+
+### cPanel (Gambaran Umum)
+- **File Manager** untuk upload/edit file.
+- **MySQL Databases** untuk membuat database dan user.
+- **Domains/Subdomains** untuk mengatur domain.
+- **SSL/TLS** untuk aktifkan HTTPS.
+- **Email Accounts** untuk email hosting.
+
 ## 5. VPS (Virtual Private Server) – Fokus Utama
 - Satu server fisik dibagi menjadi beberapa server virtual.
 - Resource lebih terjamin dibanding shared hosting.
@@ -104,6 +116,7 @@ Hosting adalah layanan untuk menempatkan aplikasi/website agar bisa diakses publ
 - **Database**: menyimpan data (PostgreSQL, MySQL).
 - **Storage**: menyimpan file statis (gambar, dokumen).
 - **CDN** (opsional): mempercepat akses file statis.
+- **Shared hosting stack**: satu server melayani banyak akun, web server bersama, database terpisah logis, dan control panel seperti cPanel.
 
 **Ilustrasi sederhana**
 Pengguna → DNS → Server → Reverse Proxy → App Server → Database
