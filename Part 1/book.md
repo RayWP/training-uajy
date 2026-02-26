@@ -1,7 +1,7 @@
-# Buku Praktis: Git dan GitHub untuk Pemula
+# Buku Praktis: Git dan GitLab untuk Pemula
 
 ## Tentang Buku Ini
-Buku ini adalah modul pelatihan langkah demi langkah untuk pemula total. Setiap bab dibangun secara bertahap, dari nol hingga mampu bekerja dengan Git dan GitHub secara mandiri untuk proyek kecil. Materi disusun modular, sehingga bisa dipakai sebagai buku ajar, pegangan kelas, atau belajar mandiri.
+Buku ini adalah modul pelatihan langkah demi langkah untuk pemula total. Setiap bab dibangun secara bertahap, dari nol hingga mampu bekerja dengan Git dan GitLab secara mandiri untuk proyek kecil. Materi disusun modular, sehingga bisa dipakai sebagai buku ajar, pegangan kelas, atau belajar mandiri.
 
 ## Tujuan Akhir
 Setelah menyelesaikan buku ini, pembaca mampu:
@@ -9,7 +9,7 @@ Setelah menyelesaikan buku ini, pembaca mampu:
 - Membuat dan mengelola repository Git lokal.
 - Melakukan commit dengan pesan yang baik.
 - Membuat branch, menggabungkan perubahan, dan menyelesaikan konflik sederhana.
-- Menghubungkan repository lokal ke GitHub.
+- Menghubungkan repository lokal ke GitLab.
 - Menggunakan issues dan pull request untuk kolaborasi dasar.
 - Memahami perbedaan merge, squash, dan rebase secara konseptual.
 - Menulis dokumentasi sederhana dengan Markdown.
@@ -23,7 +23,7 @@ Setelah menyelesaikan buku ini, pembaca mampu:
 - Laptop/PC.
 - Koneksi internet.
 - Git sudah terinstal.
-- Akun GitHub.
+- Akun GitLab.
 - Editor kode seperti VS Code.
 
 ---
@@ -156,14 +156,14 @@ Proses menggabungkan perubahan dari branch lain ke branch aktif. Biasanya setela
 Contoh cerita: Setelah `feature-login` selesai dan diuji, tim melakukan merge agar fitur login resmi masuk ke `main`.
 
 ### Remote
-Repo jarak jauh (misalnya di GitHub) yang menjadi sumber kolaborasi. Anda bisa punya lebih dari satu remote, tapi umumnya memakai `origin`.
+Repo jarak jauh (misalnya di GitLab) yang menjadi sumber kolaborasi. Anda bisa punya lebih dari satu remote, tapi umumnya memakai `origin`.
 
-Contoh cerita: Repo lokal Sari terhubung ke GitHub. GitHub itu adalah remote tempat timnya berbagi perubahan.
+Contoh cerita: Repo lokal Sari terhubung ke GitLab. GitLab itu adalah remote tempat timnya berbagi perubahan.
 
 ### Origin
 Nama default untuk remote utama. Saat Anda clone repo, Git otomatis membuat remote bernama `origin`.
 
-Contoh cerita: Setelah clone repo tim, Tono menjalankan `git remote -v` dan melihat nama `origin` yang menunjuk ke GitHub perusahaan.
+Contoh cerita: Setelah clone repo tim, Tono menjalankan `git remote -v` dan melihat nama `origin` yang menunjuk ke GitLab perusahaan.
 
 ### HEAD
 Penanda commit/branch yang sedang aktif. Saat Anda berpindah branch, `HEAD` ikut berpindah.
@@ -216,6 +216,18 @@ File konfigurasi untuk memberitahu Git agar mengabaikan file tertentu (misal: fi
 
 Contoh cerita: Folder `node_modules` terlalu besar dan tidak perlu di-commit, jadi tim menuliskannya di `.gitignore`.
 
+**Kenapa penting:** Tanpa `.gitignore`, repo bisa penuh file sementara yang tidak relevan, membuat commit berat dan sulit dibaca.
+
+**Contoh isi `.gitignore` sederhana:**
+```
+node_modules/
+dist/
+.env
+*.log
+```
+
+**Kapan dibuat:** Idealnya di awal proyek, sebelum banyak file sementara tercatat.
+
 ### Conflict
 Terjadi saat dua perubahan menyentuh baris yang sama dan Git tidak bisa memutuskan mana yang benar. Konflik harus diselesaikan manual.
 
@@ -231,7 +243,7 @@ Workflow adalah urutan kerja yang konsisten agar perubahan teratur, mudah direvi
 4. `git add` untuk memilih perubahan yang akan disimpan.
 5. `git commit` dengan pesan yang jelas.
 6. `git push` ke remote.
-7. (Jika memakai GitHub) buka pull request.
+7. (Jika memakai GitLab) buka merge request.
 8. Review, perbaiki jika perlu, lalu merge ke `main`.
 
 ### Ilustrasi Workflow
@@ -242,8 +254,8 @@ flowchart LR
   W --> A[git add]
   A --> C[git commit]
   C --> P[git push]
-  P --> PR[Pull Request]
-  PR --> R[Review]
+  P --> MR[Merge Request]
+  MR --> R[Review]
   R --> M[Merge ke main]
 ```
 
@@ -254,8 +266,8 @@ Kasus: Tim ingin menambahkan fitur “Profil Pengguna”.
 3. Rina menambah file `profile.html` dan mengedit `style.css`.
 4. Rina memilih perubahan yang benar dengan `git add profile.html style.css`.
 5. Rina commit dengan pesan `add user profile page`.
-6. Rina push ke GitHub: `git push -u origin feature-profile`.
-7. Rina membuka pull request dan meminta review.
+6. Rina push ke GitLab: `git push -u origin feature-profile`.
+7. Rina membuka merge request dan meminta review.
 8. Setelah disetujui, branch di-merge ke `main`.
 
 ### Kenapa Workflow Penting
@@ -471,7 +483,7 @@ flowchart LR
 flowchart LR
   W[Working Directory] -->|git add| S[Staging Area]
   S -->|git commit| R[Repository]
-  R -->|git push| O[Remote (GitHub)]
+  R -->|git push| O[Remote (GitLab)]
 ```
 
 ## Studi Kasus Mini
@@ -637,7 +649,8 @@ Kelebihan:
 - Mudah untuk pemula.
 
 Contoh GUI:
-- GitHub Desktop.
+- GitKraken.
+- Sourcetree.
 - VS Code Source Control.
 
 ## Latihan Bab 9
@@ -646,25 +659,27 @@ Contoh GUI:
 
 ---
 
-# Bab 10. Perkenalan GitHub
+# Bab 10. Perkenalan GitLab
 
-## 10.1 Git vs GitHub
+## 10.1 Git vs GitLab
 - Git adalah tool.
-- GitHub adalah platform hosting Git.
+- GitLab adalah platform hosting Git.
 
-## 10.2 Alternatif GitHub
-- GitLab.
+## 10.2 Alternatif GitLab
+- GitHub.
 - Bitbucket.
 - Azure Repos.
 
-## 10.3 Fitur Dasar GitHub
-- Repository.
+## 10.3 Fitur Dasar GitLab
+- Repository/Project.
 - Issues.
-- Pull request.
+- Merge Request.
+- Boards (Issue Boards).
+- CI/CD (Pipelines).
 - Review dan diskusi.
 
 ## Ringkasan Bab 10
-GitHub memudahkan kolaborasi dan berbagi kode.
+GitLab memudahkan kolaborasi dan berbagi kode.
 
 ---
 
@@ -672,22 +687,22 @@ GitHub memudahkan kolaborasi dan berbagi kode.
 
 ## 11.1 Konsep Local dan Remote
 - Local: repository di komputer Anda.
-- Remote: repository di server (GitHub).
+- Remote: repository di server (GitLab).
 
 ## 11.2 Menambah Remote
-1. Buat repo kosong di GitHub.
+1. Buat repo kosong di GitLab.
 2. Jalankan `git remote add origin <URL>`.
 3. Push dengan `git push -u origin main`.
 
 ## 11.3 Ilustrasi: Local dan Remote
 ```mermaid
 flowchart LR
-  L[Local Repo] -->|git push| R[GitHub Remote]
+  L[Local Repo] -->|git push| R[GitLab Remote]
   R -->|git pull| L
 ```
 
-## 11.4 Git Credentials dan Autentikasi GitHub
-Saat Git berbicara dengan GitHub (push/pull), Git perlu **autentikasi**. Autentikasi ini tidak “tersimpan di Git”, melainkan dikelola oleh sistem kredensial di komputer Anda.
+## 11.4 Git Credentials dan Autentikasi GitLab
+Saat Git berbicara dengan GitLab (push/pull), Git perlu **autentikasi**. Autentikasi ini tidak “tersimpan di Git”, melainkan dikelola oleh sistem kredensial di komputer Anda.
 
 ### Opsi Autentikasi Utama
 - **HTTPS + Personal Access Token (PAT)**: lebih mudah untuk pemula.
@@ -695,13 +710,13 @@ Saat Git berbicara dengan GitHub (push/pull), Git perlu **autentikasi**. Autenti
 
 ### A. HTTPS + PAT (Pemula)
 Konsep:
-- GitHub **tidak menerima password akun** untuk operasi Git via HTTPS.
+- GitLab **tidak menerima password akun** untuk operasi Git via HTTPS.
 - Anda harus memakai **PAT** sebagai pengganti password.
 
 Langkah ringkas:
-1. Buat PAT di GitHub (Settings → Developer settings → Personal access tokens).
+1. Buat PAT di GitLab (User Settings → Access Tokens).
 2. Saat Git meminta username dan password:
-   - Username: username GitHub Anda.
+   - Username: username GitLab Anda.
    - Password: PAT yang baru dibuat.
 3. Credential manager akan menyimpan token agar tidak perlu input ulang.
 
@@ -710,28 +725,28 @@ Catatan:
 
 ### B. SSH Key (Lebih Praktis)
 Konsep:
-- Anda membuat kunci SSH di komputer, lalu mendaftarkan **public key** ke GitHub.
+- Anda membuat kunci SSH di komputer, lalu mendaftarkan **public key** ke GitLab.
 - Setelah itu push/pull bisa dilakukan tanpa memasukkan token.
 
 Langkah ringkas:
 1. Buat key: `ssh-keygen -t ed25519 -C "email@anda.com"`.
-2. Tambahkan **public key** ke GitHub (Settings → SSH and GPG keys).
-3. Uji koneksi: `ssh -T git@github.com`.
+2. Tambahkan **public key** ke GitLab (User Settings → SSH Keys).
+3. Uji koneksi: `ssh -T git@gitlab.com`.
 4. Pastikan remote memakai SSH:
-   - Contoh format: `git@github.com:username/nama-repo.git`
-   - Ganti remote: `git remote set-url origin git@github.com:username/nama-repo.git`
+   - Contoh format: `git@gitlab.com:username/nama-repo.git`
+   - Ganti remote: `git remote set-url origin git@gitlab.com:username/nama-repo.git`
 
-### Bagaimana Git Menghubungkan Kredensial ke Akun GitHub
+### Bagaimana Git Menghubungkan Kredensial ke Akun GitLab
 - Git melihat URL remote repo.
 - Jika URL HTTPS, Git meminta kredensial (username + PAT).
 - Jika URL SSH, Git memakai private key di komputer.
-- GitHub memverifikasi dan menghubungkan ke akun berdasarkan token atau public key.
+- GitLab memverifikasi dan menghubungkan ke akun berdasarkan token atau public key.
 
 ## Latihan Bab 11 (Opsional)
 1. Cek remote Anda: `git remote -v`.
 2. Tentukan apakah Anda memakai HTTPS atau SSH.
 3. Jika HTTPS, pastikan token tersimpan dengan benar.
-4. Jika SSH, jalankan `ssh -T git@github.com` untuk memastikan koneksi.
+4. Jika SSH, jalankan `ssh -T git@gitlab.com` untuk memastikan koneksi.
 
 ## Studi Kasus Mini
 Kasus: Anda bekerja di dua laptop.
@@ -739,61 +754,60 @@ Kasus: Anda bekerja di dua laptop.
 - Pull di laptop 2.
 
 ## Latihan Bab 11
-1. Buat repo kosong di GitHub.
-2. Hubungkan repo lokal ke GitHub.
+1. Buat repo kosong di GitLab.
+2. Hubungkan repo lokal ke GitLab.
 3. Push perubahan.
 
 ---
 
-# Bab 12. GitHub Repositories
+# Bab 12. GitLab Projects (Repository)
 
-## 12.1 Apa Itu GitHub Repository
-GitHub repository adalah **repository Git yang disimpan di GitHub**. Repo ini berisi kode, histori commit, dan fitur kolaborasi seperti Issues, Pull Request, dan Actions.
+## 12.1 Apa Itu GitLab Project/Repository
+GitLab project adalah **repository Git yang disimpan di GitLab**. Project ini berisi kode, histori commit, dan fitur kolaborasi seperti Issues, Merge Request, dan CI/CD.
 
-## 12.2 Perbedaan Repo Lokal vs Repo GitHub
+## 12.2 Perbedaan Repo Lokal vs Repo GitLab
 - **Repo lokal** ada di komputer Anda dan bisa digunakan tanpa internet.
-- **Repo GitHub** ada di server GitHub dan dipakai untuk kolaborasi, backup, dan berbagi kode.
+- **Repo GitLab** ada di server GitLab dan dipakai untuk kolaborasi, backup, dan berbagi kode.
 
-## 12.3 Cara Membuat Repository di GitHub
-1. Masuk ke GitHub.
-2. Klik tombol **+** di kanan atas, pilih **New repository**.
-3. Isi nama repo, pilih Public/Private.
-4. (Opsional) Centang **Add a README file**.
-5. Klik **Create repository**.
+## 12.3 Cara Membuat Project di GitLab
+1. Masuk ke GitLab.
+2. Klik **New project**.
+3. Pilih **Create blank project**.
+4. Isi nama project, pilih visibility (Public/Private).
+5. (Opsional) Centang **Initialize repository with a README**.
+6. Klik **Create project**.
 
-## 12.4 Cara Mengakses Fitur di Repository
-Setelah repo dibuat, Anda akan melihat beberapa tab di halaman repo:
-- **Code**: melihat file dan tombol **Code** untuk clone.
+## 12.4 Cara Mengakses Fitur di Project
+Setelah project dibuat, Anda akan melihat beberapa menu di sidebar:
+- **Repository**: melihat file, clone URL, dan histori.
 - **Issues**: membuat dan mengelola tugas/bug.
-- **Pull requests**: mengusulkan perubahan dari branch.
-- **Projects**: papan kerja untuk merencanakan dan melacak pekerjaan.
-- **Actions**: melihat workflow otomatis.
-- **Settings**: mengatur akses dan fitur repo.
+- **Merge requests**: mengusulkan perubahan dari branch.
+- **CI/CD**: melihat pipeline dan job.
+- **Settings**: mengatur akses dan fitur project.
 
-Jika tab **Issues** atau **Actions** tidak muncul, cek **Settings → Features** untuk mengaktifkannya.
+Jika menu **Issues** atau **CI/CD** tidak terlihat, cek **Settings → General → Visibility, project features, permissions**.
 
-## 12.5 GitHub Projects
-GitHub Projects adalah papan kerja (kanban/roadmap) untuk mengatur pekerjaan menggunakan issue dan pull request sebagai item.
+## 12.5 GitLab Issue Boards
+GitLab Issue Boards adalah papan kerja (kanban) untuk mengatur pekerjaan menggunakan issue sebagai kartu.
 
-### Cara Mengakses Projects
-1. Buka halaman repository di GitHub.
-2. Klik tab **Projects**.
-3. Klik **New project**.
-4. Pilih template (misal: Kanban).
-5. Tambahkan issue atau PR ke board dengan **Add item**.
+### Cara Mengakses Issue Boards
+1. Buka halaman project di GitLab.
+2. Klik **Issues → Boards**.
+3. Klik **Create board** jika belum ada.
+4. Tambahkan issue ke kolom yang sesuai.
 
 Catatan:
-- Di beberapa organisasi, Projects bisa diatur dari level organisasi, bukan hanya repo.
-- Jika tab **Projects** tidak terlihat, aktifkan di **Settings → Features** atau cek izin akses.
+- Board bisa disesuaikan berdasarkan label.
+- Untuk tim besar, board membantu melihat progres secara visual.
 
 ## Latihan Bab 12
-1. Buat repo baru di GitHub.
-2. Buka tab **Code** dan salin URL clone.
-3. Masuk ke tab **Issues** untuk memastikan fitur aktif.
+1. Buat project baru di GitLab.
+2. Buka menu **Repository** dan salin URL clone.
+3. Masuk ke **Issues** untuk memastikan fitur aktif.
 
 ---
 
-# Bab 13. GitHub Issues
+# Bab 13. GitLab Issues
 
 ## 13.1 Apa Itu Issues
 Issues adalah daftar tugas, bug, atau diskusi.
@@ -807,63 +821,63 @@ Issues adalah daftar tugas, bug, atau diskusi.
 2. Isi judul dan deskripsi.
 3. Tambahkan label dan assignee jika perlu.
 
-## 13.4 Cara Mengakses Issues di GitHub
-1. Buka halaman repository di GitHub.
-2. Klik tab **Issues**.
+## 13.4 Cara Mengakses Issues di GitLab
+1. Buka halaman project di GitLab.
+2. Klik menu **Issues**.
 3. Klik tombol **New issue**.
 4. Pilih template (jika ada), isi judul dan deskripsi.
 5. Tambahkan label, assignee, atau milestone.
 
-Jika tab **Issues** tidak terlihat, aktifkan di **Settings → Features**.
+Jika menu **Issues** tidak terlihat, aktifkan di **Settings → General → Visibility, project features, permissions**.
 
 ## Latihan Bab 13
-1. Buat 1 issue di repo GitHub Anda.
+1. Buat 1 issue di project GitLab Anda.
 2. Tambahkan label sederhana.
 
 ---
 
-# Bab 14. Pull Request
+# Bab 14. Merge Request
 
-## 14.1 Apa Itu Pull Request
-PR adalah proposal perubahan dari branch ke branch lain.
+## 14.1 Apa Itu Merge Request
+MR adalah proposal perubahan dari branch ke branch lain.
 
 ## 14.2 Alur Dasar
 1. Buat branch.
 2. Commit perubahan.
 3. Push branch.
-4. Buat PR di GitHub.
+4. Buat MR di GitLab.
 
 ## 14.3 Review dan Merge
 - Reviewer memberi komentar.
 - Setelah disetujui, perubahan di-merge.
 
-## 14.4 Cara Mengakses Pull Request di GitHub
-1. Buka halaman repository di GitHub.
-2. Klik tab **Pull requests**.
-3. Klik tombol **New pull request**.
+## 14.4 Cara Mengakses Merge Request di GitLab
+1. Buka halaman project di GitLab.
+2. Klik menu **Merge requests**.
+3. Klik tombol **New merge request**.
 4. Pilih branch sumber (feature) dan branch tujuan (main).
-5. Isi judul dan deskripsi PR.
-6. Klik **Create pull request**.
-7. Tambahkan reviewer jika diperlukan.
+5. Isi judul dan deskripsi MR.
+6. Klik **Create merge request**.
+7. Tambahkan reviewer atau assignee jika diperlukan.
 
 Catatan:
-- Jika tab **Pull requests** tidak muncul, cek **Settings → Features**.
-- Anda juga bisa membuat PR dari notifikasi “Compare & pull request” setelah push branch.
+- Jika menu **Merge requests** tidak muncul, cek **Settings → General → Visibility, project features, permissions**.
+- Anda juga bisa membuat MR dari notifikasi setelah push branch.
 
-## 14.5 Ilustrasi: Alur Pull Request
+## 14.5 Ilustrasi: Alur Merge Request
 ```mermaid
 flowchart LR
   I[Issue] --> B[Branch]
   B --> C[Commit]
-  C --> P[Pull Request]
-  P --> R[Review]
-  R --> M[Merge]
+  C --> MR[Merge Request]
+  MR --> R[Review]
+  R --> MRG[Merge]
 ```
 
 ## Latihan Bab 14
 1. Buat branch baru.
 2. Lakukan perubahan kecil.
-3. Buka PR dan merge.
+3. Buka MR dan merge.
 
 ---
 
@@ -879,7 +893,7 @@ Fork adalah salinan repo ke akun Anda.
 ## Latihan Bab 15
 1. Fork repo publik.
 2. Buat perubahan kecil.
-3. Buat PR ke repo asal.
+3. Buat MR ke repo asal.
 
 ---
 
@@ -942,14 +956,14 @@ gitGraph
 
 ---
 
-# Bab 17. GitHub Actions (Intro)
+# Bab 17. GitLab CI/CD (Intro)
 
 ## 17.1 Konsep Dasar
-GitHub Actions adalah automasi workflow seperti build dan test.
+GitLab CI/CD adalah automasi workflow seperti build dan test.
 
 ## 17.2 Contoh Sederhana
 - Saat ada push, jalankan build.
-- Workflow ditulis dalam file YAML.
+- Pipeline ditulis dalam file `.gitlab-ci.yml`.
 
 ## Ringkasan Bab 17
 Actions membantu otomatisasi langkah berulang.
@@ -998,16 +1012,16 @@ Anda membuat proyek mini: "Website Profil".
 5. Tambahkan bagian bio.
 6. Commit perubahan.
 7. Merge ke `main`.
-8. Push ke GitHub.
+8. Push ke GitLab.
 9. Buat issue: "Tambah kontak".
 10. Buat branch `feature-contact`.
 11. Tambah bagian kontak.
 12. Commit dan push.
-13. Buat PR dan merge.
+13. Buat MR dan merge.
 
 ## 19.3 Hasil Akhir
 - Repo berisi histori commit jelas.
-- Ada issue dan PR di GitHub.
+- Ada issue dan MR di GitLab.
 
 ---
 
@@ -1018,8 +1032,8 @@ Anda membuat proyek mini: "Website Profil".
 2. Saya bisa membuat repo dan commit.
 3. Saya bisa membuat branch dan merge.
 4. Saya pernah menyelesaikan konflik.
-5. Saya bisa push ke GitHub.
-6. Saya bisa membuat issue dan PR.
+5. Saya bisa push ke GitLab.
+6. Saya bisa membuat issue dan MR.
 7. Saya memahami konsep merge, squash, dan rebase.
 8. Saya bisa menulis README dengan Markdown.
 
@@ -1030,6 +1044,12 @@ Anda membuat proyek mini: "Website Profil".
 ---
 
 # Referensi Resmi
-- https://github.com/git-guides
-- https://learn.microsoft.com/en-us/training/paths/github-foundations/
-- https://learn.microsoft.com/en-us/training/paths/github-foundations-2/
+- https://git-scm.com/docs
+- https://docs.gitlab.com/ee/
+- https://docs.gitlab.com/ee/user/project/
+- https://docs.gitlab.com/ee/user/project/issues/
+- https://docs.gitlab.com/ee/user/project/merge_requests/
+- https://docs.gitlab.com/ee/ci/
+- https://docs.gitlab.com/ee/user/project/issues/issue_board.html
+- https://docs.gitlab.com/ee/user/ssh.html
+- https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html

@@ -1,4 +1,4 @@
-# Outline PPT: Git dan GitHub (2 Jam)
+# Outline PPT: Git dan GitLab (2 Jam)
 
 ## Panduan Waktu
 - Total: 120 menit.
@@ -94,50 +94,50 @@ Durasi: 3 menit
 Tujuan: Menunjukkan opsi tools.
 Konten: CLI vs GitHub Desktop/VS Code.
 
-18. Git vs GitHub
+18. Git vs GitLab
 Durasi: 3 menit
 Tujuan: Memisahkan konsep.
-Konten: Git = alat, GitHub = platform.
+Konten: Git = alat, GitLab = platform.
 
-19. Fitur Dasar GitHub
+19. Fitur Dasar GitLab
 Durasi: 4 menit
 Tujuan: Pengenalan ekosistem.
-Konten: Repo, issue, PR, review.
+Konten: Repo, issue, MR, review, boards.
 
 20. Local vs Remote
 Durasi: 4 menit
 Tujuan: Memahami arah data.
 Konten: Push, pull, origin.
 
-21. GitHub Issues
+21. GitLab Issues
 Durasi: 3 menit
 Tujuan: Manajemen pekerjaan.
 Konten: Issue sebagai tiket kerja.
 
-22. Pull Request
+22. Merge Request
 Durasi: 4 menit
 Tujuan: Review dan kolaborasi.
-Konten: PR sebagai proposal perubahan.
+Konten: MR sebagai proposal perubahan.
 
 23. Forking
 Durasi: 2 menit
 Tujuan: Kontribusi open source.
 Konten: Fork untuk repo yang bukan milik kita.
 
-24. Panduan Branch-Issue-PR
+24. Panduan Branch-Issue-MR
 Durasi: 4 menit
 Tujuan: Alur kerja ringkas.
-Konten: Issue -> branch -> commit -> PR.
+Konten: Issue -> branch -> commit -> MR.
 
 25. Merge, Squash, Rebase
 Durasi: 5 menit
 Tujuan: Memilih strategi histori.
 Konten: Kapan pakai merge vs squash vs rebase.
 
-26. GitHub Actions (Intro)
+26. GitLab CI/CD (Intro)
 Durasi: 3 menit
 Tujuan: Otomatisasi dasar.
-Konten: Workflow YAML, contoh build/test.
+Konten: Pipeline `.gitlab-ci.yml`, contoh build/test.
 
 27. Markdown Basics
 Durasi: 3 menit
@@ -147,7 +147,7 @@ Konten: Heading, list, code block, link.
 28. Latihan Cepat (Instruksi)
 Durasi: 8 menit
 Tujuan: Menggabungkan Git + GitHub.
-Konten: Push repo, buat issue, PR singkat.
+Konten: Push repo, buat issue, MR singkat.
 
 29. Recap dan Quiz
 Durasi: 6 menit
@@ -167,6 +167,5 @@ Konten: Materi lanjutan dan Q&A.
 - Fokus pada konsep inti, sisakan detail lanjutan sebagai bacaan.
 
 # Referensi
-- https://github.com/git-guides
-- https://learn.microsoft.com/en-us/training/paths/github-foundations/
-- https://learn.microsoft.com/en-us/training/paths/github-foundations-2/
+- https://git-scm.com/docs
+- https://docs.gitlab.com/ee/

@@ -1,20 +1,20 @@
-# Modul Pelatihan: Git dan GitHub
+# Modul Pelatihan: Git dan GitLab
 
 ## Ringkasan
-Modul ini membahas dasar Git dan GitHub untuk peserta pemula hingga menengah. Fokus utama adalah memahami konsep, alur kerja, dan praktik kolaborasi dasar yang relevan untuk individu maupun tim kecil.
+Modul ini membahas dasar Git dan GitLab untuk peserta pemula hingga menengah. Fokus utama adalah memahami konsep, alur kerja, dan praktik kolaborasi dasar yang relevan untuk individu maupun tim kecil.
 
 ## Tujuan Pembelajaran
 Setelah pelatihan, peserta mampu:
 - Menjelaskan konsep version control dan manfaatnya.
 - Menggunakan Git untuk membuat repo, melacak perubahan, dan mengelola riwayat.
 - Menerapkan workflow Git sederhana dengan branch, merge, dan resolusi konflik.
-- Menggunakan fitur inti GitHub: repository, issues, pull request, dan kolaborasi.
-- Memahami perbedaan Git vs GitHub serta opsi hosting Git lain.
+- Menggunakan fitur inti GitLab: repository, issues, merge request, dan kolaborasi.
+- Memahami perbedaan Git vs GitLab serta opsi hosting Git lain.
 - Memilih pendekatan merge (merge commit, squash, rebase) sesuai kebutuhan.
 - Menulis dokumentasi dan komunikasi teknis dasar dengan Markdown.
 
 ## Target Peserta
-- Mahasiswa, junior developer, atau anggota tim non-teknis yang perlu memahami Git/GitHub.
+- Mahasiswa, junior developer, atau anggota tim non-teknis yang perlu memahami Git/GitLab.
 
 ## Durasi Rekomendasi
 - 2 jam (120 menit).
@@ -24,7 +24,7 @@ Setelah pelatihan, peserta mampu:
 - 10-30: Git dasar dan Git sebagai dokumentasi.
 - 30-50: Perintah inti + demo `git log`.
 - 50-65: Branching dan konflik (demo cepat).
-- 65-85: GitHub dasar (repo, issue, PR).
+- 65-85: GitLab dasar (repo, issue, MR).
 - 85-100: Merge strategy, Actions (intro), dan Markdown.
 - 100-120: Latihan cepat, recap, dan kuis singkat.
 
@@ -34,7 +34,7 @@ Setelah pelatihan, peserta mampu:
 
 ## Perlengkapan
 - Git terinstal.
-- Akun GitHub.
+- Akun GitLab.
 - VS Code atau IDE lain.
 
 ---
@@ -68,6 +68,7 @@ Setelah pelatihan, peserta mampu:
 - Branch: jalur pengembangan terpisah.
 - Merge: menggabungkan perubahan dari branch lain.
 - Remote: repo jarak jauh untuk kolaborasi.
+- .gitignore: daftar file yang diabaikan Git (misal build, cache, env).
 
 ## 5. Git Workflow dan Dampaknya pada Cara Kerja
 - Alur umum: buat branch -> ubah -> commit -> push -> pull request -> review -> merge.
@@ -93,7 +94,7 @@ Setelah pelatihan, peserta mampu:
 ## 7. Git di Terminal/Bash vs GUI
 - Terminal memberikan akses penuh ke fitur Git.
 - GUI memudahkan visualisasi dan staging.
-- Contoh GUI: GitHub Desktop, VS Code Source Control.
+- Contoh GUI: GitKraken, Sourcetree, VS Code Source Control.
 
 **Latihan singkat**
 - Lakukan commit di terminal, lalu lihat hasilnya di GUI.
@@ -129,49 +130,50 @@ Setelah pelatihan, peserta mampu:
 
 ---
 
-# B. GitHub
+# B. GitLab
 
-## 1. Perbedaan Git dan GitHub
+## 1. Perbedaan Git dan GitLab
 - Git: tool version control.
-- GitHub: platform hosting repo Git dan kolaborasi berbasis cloud.
+- GitLab: platform hosting repo Git dan kolaborasi berbasis cloud.
 
-## 2. Alternatif GitHub
-- GitLab, Bitbucket, Azure Repos.
+## 2. Alternatif GitLab
+- GitHub, Bitbucket, Azure Repos.
 - Pilih sesuai kebutuhan organisasi, integrasi, dan kontrol akses.
 
-## 3. Fitur Dasar GitHub
+## 3. Fitur Dasar GitLab
 - Repository management.
 - Issues untuk pencatatan tugas/bug.
-- Projects untuk papan perencanaan kerja berbasis issue/PR.
-- Branch, commit, dan pull request.
+- Boards untuk papan perencanaan kerja berbasis issue/MR.
+- Branch, commit, dan merge request.
+- CI/CD (pipelines) untuk otomatisasi build/test/deploy.
 - Kolaborasi dan notifikasi.
 
-## 4. Konsep Local vs Remote dan GitHub Desktop
+## 4. Konsep Local vs Remote dan Git GUI
 - Repo lokal berada di komputer pengguna.
-- Remote repo berada di server (GitHub).
-- GitHub Desktop menyediakan UI untuk operasi Git umum (clone, commit, push, PR).
+- Remote repo berada di server (GitLab).
+- GUI seperti GitKraken/Sourcetree/VS Code membantu operasi Git umum (clone, commit, push, MR).
 
-## 5. GitHub Issues
+## 5. GitLab Issues
 - Digunakan untuk mencatat ide, tugas, bug, atau diskusi.
-- Mendukung label, assignee, dan keterkaitan dengan PR.
+- Mendukung label, assignee, dan keterkaitan dengan MR.
 
-## 6. GitHub Pull Request
-- PR adalah proposal untuk menggabungkan perubahan dari branch ke branch lain.
+## 6. GitLab Merge Request
+- MR adalah proposal untuk menggabungkan perubahan dari branch ke branch lain.
 - Dapat di-review, dikomentari, dan direvisi sebelum merge.
 
-## 7. GitHub Actions (Pengantar)
+## 7. GitLab CI/CD (Pengantar)
 - Otomatisasi workflow seperti build, test, dan deploy langsung di repo.
-- Workflow didefinisikan dalam file YAML.
+- Pipeline didefinisikan dalam file `.gitlab-ci.yml`.
 
-## 8. GitHub Forking
+## 8. GitLab Forking
 - Fork adalah salinan repo ke akun lain.
 - Memungkinkan kontribusi tanpa akses langsung ke repo utama.
 
-## 9. Panduan Branching, Issue, dan PR (Ringkas)
+## 9. Panduan Branching, Issue, dan MR (Ringkas)
 - Buat issue untuk mendefinisikan pekerjaan.
 - Buat branch dari issue.
 - Commit perubahan kecil dan fokus.
-- Buka PR, lakukan review, dan merge.
+- Buka MR, lakukan review, dan merge.
 
 ## 10. Squash vs Merge vs Rebase
 - Merge commit: mempertahankan histori lengkap dari branch.
@@ -180,7 +182,7 @@ Setelah pelatihan, peserta mampu:
 - Pilih sesuai kebutuhan: audit detail vs histori ringkas.
 
 ## 11. Bonus: Markdown
-- Markdown dipakai untuk README, issue, PR, dan dokumentasi.
+- Markdown dipakai untuk README, issue, MR, dan dokumentasi.
 - Syntax dasar: heading, list, code block, link, task list.
 
 ---
@@ -194,11 +196,11 @@ Setelah pelatihan, peserta mampu:
 4. Ubah file, commit lagi.
 5. Lihat `git log`.
 
-## Latihan B: GitHub Flow Ringkas (25 menit)
-1. Push repo ke GitHub.
+## Latihan B: GitLab Flow Ringkas (25 menit)
+1. Push repo ke GitLab.
 2. Buat issue.
 3. Buat branch dan commit.
-4. Push branch, buka PR.
+4. Push branch, buka MR.
 5. Lakukan review dan merge.
 
 ## Opsional (Jika Waktu Cukup)
@@ -208,41 +210,27 @@ Setelah pelatihan, peserta mampu:
 ---
 
 # Evaluasi
-- Kuis singkat 5-10 menit: konsep Git, GitHub, workflow.
-- Tugas lanjutan (opsional): kolaborasi dengan 1 rekan menggunakan branch dan PR.
+- Kuis singkat 5-10 menit: konsep Git, GitLab, workflow.
+- Tugas lanjutan (opsional): kolaborasi dengan 1 rekan menggunakan branch dan MR.
 
 ---
 
 # Referensi
-- https://github.com/git-guides
-- https://github.com/git-guides/git-commit
-- https://github.com/git-guides/git-init
-- https://github.com/git-guides/git-add
-- https://github.com/git-guides/git-clone
-- https://github.com/git-guides/git-status
-- https://github.com/git-guides/git-pull
-- https://github.com/git-guides/git-push
-- https://github.com/git-guides/git-remote
-- https://github.com/resources/articles/what-is-version-control
-- https://learn.microsoft.com/en-us/training/paths/github-foundations/
-- https://learn.microsoft.com/en-us/training/paths/github-foundations-2/
-- https://learn.microsoft.com/en-us/training/modules/introduction-to-github/
-- https://learn.microsoft.com/en-us/training/modules/intro-to-git/
-- https://learn.microsoft.com/en-us/training/modules/manage-changes-pull-requests-github/
-- https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues
-- https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-- https://docs.github.com/articles/about-forks
-- https://docs.github.com/en/actions
-- https://docs.github.com/articles/about-merge-methods-on-github/
-- https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 - https://git-scm.com/docs/git-log
 - https://git-scm.com/docs/git-blame
 - https://git-scm.com/docs/git-branch
 - https://git-scm.com/docs/git-merge
 - https://git-scm.com/docs/git-rebase
-- https://docs.github.com/en/desktop
 - https://code.visualstudio.com/docs/sourcecontrol/overview
+- https://docs.gitlab.com/ee/
+- https://docs.gitlab.com/ee/user/project/
+- https://docs.gitlab.com/ee/user/project/issues/
+- https://docs.gitlab.com/ee/user/project/merge_requests/
+- https://docs.gitlab.com/ee/ci/
 - https://docs.gitlab.com/ee/user/project/repository/
+- https://docs.gitlab.com/ee/user/project/issues/issue_board.html
+- https://docs.gitlab.com/ee/user/ssh.html
+- https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html
 - https://www.atlassian.com/software/bitbucket/guides/getting-started/overview
 - https://learn.microsoft.com/en-us/azure/devops/repos/
 - https://azure.microsoft.com/products/devops/repos/
