@@ -199,6 +199,45 @@ Website modern adalah kombinasi beberapa komponen, bukan hanya satu server.
 - Menjalankan logika aplikasi (API, auth, database).
 - Fokus pada stabilitas dan keamanan.
 
+## 5.3 Hosting AI App: Dua Skenario Umum
+Hosting aplikasi AI punya kebutuhan berbeda dari aplikasi biasa, terutama pada **biaya komputasi, latency, dan keamanan data**. Berikut dua skenario paling umum:
+
+### Skenario A: AI API Wrapper (Menggunakan API Provider)
+Contoh: aplikasi Anda memanggil API dari penyedia AI (misal LLM) lalu menampilkan hasil.
+
+**Ciri khas:**
+- Komputasi model terjadi di pihak provider.
+- Anda hanya butuh server untuk menerima request dan meneruskan ke API.
+- Tidak perlu GPU di server Anda.
+
+**Tips penting:**
+- Simpan API key di **environment variable** (jangan di repo).
+- Gunakan **rate limiting** agar biaya tidak membengkak.
+- Tambahkan **retry** dan **timeout** untuk menjaga kestabilan.
+- Gunakan **cache** jika banyak request berulang.
+- Catat penggunaan untuk mengontrol biaya.
+
+### Skenario B: Inference Engine (Model Dijalankan Sendiri)
+Contoh: Anda menjalankan model AI di server sendiri (self-hosted).
+
+**Ciri khas:**
+- Butuh resource besar (CPU/GPU, RAM, storage).
+- Waktu respon bisa lebih lama jika model besar.
+- Perlu manajemen model (download, update, versioning).
+
+**Tips penting:**
+- Pilih server dengan **GPU** jika model besar.
+- Gunakan **batching** untuk menghemat biaya per request.
+- Sediakan **queue** untuk request yang berat.
+- Gunakan **reverse proxy** dan **load balancer** jika traffic tinggi.
+- Simpan model di storage lokal agar lebih cepat saat start.
+
+### Perbedaan Utama dengan Aplikasi Biasa
+- **Resource**: AI membutuhkan CPU/GPU dan RAM lebih besar.
+- **Biaya**: bisa melonjak jika tidak dikontrol.
+- **Latency**: response cenderung lebih lambat.
+- **Keamanan**: data input/output harus dijaga karena sering sensitif.
+
 ## Ringkasan Bab 5
 Frontend bisa di-host terpisah dari backend sesuai kebutuhan skala.
 

@@ -126,15 +126,23 @@ Pengguna → DNS → Server → Reverse Proxy → App Server → Database
 - **Backend**: server aplikasi (API, logic, auth). Butuh runtime dan database.
 - **Kebutuhan berbeda**: frontend fokus speed dan caching; backend fokus kestabilan dan security.
 
+## 10. Hosting AI App (Dua Skenario)
+- **AI API Wrapper**: server hanya meneruskan request ke penyedia AI.
+  - Tidak butuh GPU, fokus pada rate limit, cache, dan keamanan API key.
+- **Inference Engine**: model dijalankan di server sendiri.
+  - Butuh CPU/GPU besar, memory tinggi, dan optimasi (batching/queue).
+
+**Tips beda dari aplikasi biasa**: resource lebih berat, latency lebih tinggi, biaya lebih sensitif, dan keamanan data lebih penting.
+
 ---
 
 # D. Studi Kasus Sederhana
 
-## 10. Studi Kasus: Website Portofolio
+## 11. Studi Kasus: Website Portofolio
 - Kebutuhan: halaman statis, traffic kecil.
 - Rekomendasi: shared hosting atau PaaS frontend.
 
-## 11. Studi Kasus: Web App UMKM
+## 12. Studi Kasus: Web App UMKM
 - Kebutuhan: login, data produk, database.
 - Rekomendasi: VPS kecil (IaaS) atau PaaS backend.
 
