@@ -4,9 +4,9 @@
 - Total: 120 menit.
 - Slide 1-3: 10 menit.
 - Slide 4-13: 40 menit.
-- Slide 14-23: 45 menit.
-- Slide 24-26: 20 menit.
-- Slide 27: 5 menit.
+- Slide 14-24: 45 menit.
+- Slide 25-27: 20 menit.
+- Slide 28: 5 menit.
 
 ## Slide-by-Slide
 
@@ -110,37 +110,43 @@ Durasi: 5 menit
 Tujuan: Bedakan kebutuhan.
 Konten: Static vs dynamic.
 
-21. Studi Kasus: Portfolio
+21. Hosting AI App (Ringkas)
+Durasi: 4 menit
+Tujuan: Memahami dua skenario AI hosting.
+Konten: API wrapper vs inference engine, tips singkat.
+Catatan: Tekankan perbedaan kebutuhan resource, biaya, dan latency. Sarankan rate limit + cache untuk API wrapper, serta GPU + queue untuk inference engine.
+
+22. Studi Kasus: Portfolio
 Durasi: 4 menit
 Tujuan: Pilih hosting tepat.
 Konten: Shared/PaaS frontend.
 
-22. Studi Kasus: Web App UMKM
+23. Studi Kasus: Web App UMKM
 Durasi: 5 menit
 Tujuan: Pilih hosting tepat.
 Konten: VPS atau PaaS backend.
 
-23. Latihan: Pilih Hosting
+24. Latihan: Pilih Hosting
 Durasi: 5 menit
 Tujuan: Praktik keputusan.
 Konten: 2 skenario dan diskusi.
 
-24. Latihan: Pemetaan Istilah
+25. Latihan: Pemetaan Istilah
 Durasi: 5 menit
 Tujuan: Menguatkan istilah.
 Konten: Match istilah ke fungsi.
 
-25. Recap
+26. Recap
 Durasi: 3 menit
 Tujuan: Menutup materi utama.
 Konten: Ringkasan 5 poin.
 
-26. Q&A
+27. Q&A
 Durasi: 5 menit
 Tujuan: Menjawab pertanyaan.
 Konten: Diskusi.
 
-27. Penutup & Referensi
+28. Penutup & Referensi
 Durasi: 2 menit
 Tujuan: Arah belajar lanjut.
 Konten: Link referensi.
